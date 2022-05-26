@@ -1,0 +1,59 @@
+{
+  "productList": [
+    {
+      "productName": "phone",
+      "category": "Electronic",
+      "freshness": "Brand New",
+      "price": 10000,
+      "comment": "this is a brand new phone",
+      "date": "2022-05-25T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "productName": "mobile",
+      "category": "Electronic",
+      "freshness": "Brand New",
+      "price": 10000,
+      "comment": "new flagship phone",
+      "date": "2022-05-24T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "Mango",
+      "category": "Fruits",
+      "freshness": "Brand New",
+      "price": 20,
+      "comment": "fresh mango",
+      "date": "2022-05-25T18:30:00.000Z",
+      "id": 3
+    },
+    {
+      "productName": "phone1",
+      "category": "Electronic",
+      "freshness": "Brand New",
+      "price": 4566,
+      "comment": "second hand phone",
+      "date": "2022-05-24T18:30:00.000Z",
+      "id": 4
+    },
+    {
+      "productName": "Watermelon",
+      "category": "Fruits",
+      "freshness": "Brand New",
+      "price": 100,
+      "comment": "fresh watermelon",
+      "date": "2022-05-24T18:30:00.000Z",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
