@@ -1,7 +1,7 @@
 {
   "productList": [
     {
-      "productName": "phone",
+      "productName": "Phone",
       "category": "Electronic",
       "freshness": "Brand New",
       "price": 10000,
@@ -10,38 +10,29 @@
       "id": 1
     },
     {
-      "productName": "mobile",
+      "productName": "Fridge",
       "category": "Electronic",
       "freshness": "Brand New",
-      "price": 10000,
-      "comment": "new flagship phone",
+      "price": 800,
+      "comment": "this is a brand new fridge",
       "date": "2022-05-24T18:30:00.000Z",
-      "id": 2
-    },
-    {
-      "productName": "Mango",
-      "category": "Fruits",
-      "freshness": "Brand New",
-      "price": 20,
-      "comment": "fresh mango",
-      "date": "2022-05-25T18:30:00.000Z",
       "id": 3
     },
     {
-      "productName": "phone1",
+      "productName": "Laptop",
       "category": "Electronic",
-      "freshness": "Brand New",
-      "price": 4566,
-      "comment": "second hand phone",
-      "date": "2022-05-24T18:30:00.000Z",
+      "freshness": "Refurbished",
+      "price": 1200,
+      "comment": "this is a refurbished laptop",
+      "date": "2022-05-23T18:30:00.000Z",
       "id": 4
     },
     {
-      "productName": "Watermelon",
-      "category": "Fruits",
+      "productName": "vehicle",
+      "category": "Electronic",
       "freshness": "Brand New",
-      "price": 100,
-      "comment": "fresh watermelon",
+      "price": 33123,
+      "comment": "vvvvcvcv",
       "date": "2022-05-24T18:30:00.000Z",
       "id": 5
     }

@@ -1,3 +1,4 @@
+import { NgToastService } from 'ng-angular-popup';
 import { ApiService } from './services/api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -27,7 +28,11 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private dialog: MatDialog, private api: ApiService) {}
+  constructor(
+    private dialog: MatDialog,
+    private api: ApiService,
+    private toast: NgToastService
+  ) {}
 
   openDialog() {
     this.dialog
@@ -42,6 +47,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+  }
+  showToastSuccess() {
+    this.toast.success({
+      detail: 'SUCCESS',
+      summary: 'Product Deleted Successfully',
+      duration: 3000,
+    });
   }
   getAllProducts() {
     return this.api.getProduct().subscribe({
@@ -58,6 +70,8 @@ export class AppComponent implements OnInit {
   }
 
   editProduct(row: any) {
+    console.log(row);
+
     this.dialog
       .open(DialogComponent, { width: '30%', data: row })
       .afterClosed()
@@ -68,18 +82,20 @@ export class AppComponent implements OnInit {
       });
   }
 
-  deleteProduct(id: number) {
-    confirm('Are you sure You want to delete this record');
-
-    this.api.deleteProduct(id).subscribe({
-      next: (res) => {
-        alert('Product Deleted Successfully');
-        this.getAllProducts();
-      },
-      error: () => {
-        alert('Error while deleting');
-      },
-    });
+  deleteProduct(data: any) {
+    console.log(data);
+    let confirmation = confirm('Are you sure You want to delete this record');
+    if (confirmation == true) {
+      this.api.deleteProduct(data._id).subscribe({
+        next: (res) => {
+          this.showToastSuccess();
+          this.getAllProducts();
+        },
+        error: () => {
+          alert('Error while deleting');
+        },
+      });
+    }
   }
 
   applyFilter(event: Event) {

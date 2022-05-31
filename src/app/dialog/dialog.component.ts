@@ -2,6 +2,7 @@ import { ApiService } from './../services/api.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -12,6 +13,7 @@ export class DialogComponent implements OnInit {
   productForm!: FormGroup;
   actionBtn: string = 'Save';
   constructor(
+    private toast: NgToastService,
     private formBuilder: FormBuilder,
     private api: ApiService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
@@ -26,7 +28,7 @@ export class DialogComponent implements OnInit {
       comment: ['', Validators.required],
       date: ['', Validators.required],
     });
-    console.log(this.editData);
+
     if (this.editData) {
       this.actionBtn = 'Update';
       this.productForm.controls['productName'].setValue(
@@ -45,7 +47,7 @@ export class DialogComponent implements OnInit {
       if (this.productForm.valid) {
         this.api.postProduct(this.productForm.value).subscribe({
           next: (res) => {
-            alert('Product Added Successfully');
+            this.showToastAdd();
             this.productForm.reset();
             this.dialogRef.close('save');
           },
@@ -60,15 +62,29 @@ export class DialogComponent implements OnInit {
   }
 
   putProduct() {
-    this.api.putProduct(this.productForm.value, this.editData.id).subscribe({
+    this.api.putProduct(this.productForm.value, this.editData._id).subscribe({
       next: (res) => {
-        alert('product updated successfully');
+        this.showToastUpdate();
         this.productForm.reset();
         this.dialogRef.close('update');
       },
       error: () => {
         alert('error while updating');
       },
+    });
+  }
+  showToastUpdate() {
+    this.toast.success({
+      detail: 'SUCCESS',
+      summary: 'Product Updated Successfully',
+      duration: 3000,
+    });
+  }
+  showToastAdd() {
+    this.toast.success({
+      detail: 'SUCCESS',
+      summary: 'Product Updated Successfully',
+      duration: 3000,
     });
   }
 }
